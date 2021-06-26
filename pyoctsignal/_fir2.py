@@ -4,7 +4,22 @@ import scipy.interpolate as interp
 
 def fir2(n: int, f, m, grid_n: int=None, ramp_n: int=None, window='hamming'):
     """
+    Produce an order n FIR filter with arbitrary frequency response m over frequency bands f, returning the n+1 filter coefficients in b. 
     
+    The vector f specifies the frequency band edges of the filter response and m specifies the magnitude response at each frequency.
+
+    The vector f must be nondecreasing over the range [0,1], and the first and last elements must be 0 and 1, respectively. 
+    A discontinuous jump in the frequency response can be specified by duplicating a band edge in f with different values in m.
+
+    The resolution over which the frequency response is evaluated can be controlled with the grid_n argument.
+    The default is 512 or the next larger power of 2 greater than the filter length.
+
+    The band transition width for discontinuities can be controlled with the ramp_n argument.
+    The default is grid_n/25. Larger values will result in wider band transitions but better stopband rejection.
+
+    An optional shaping window can be given as a vector with length n+1. If not specified, a Hamming window of length n+1 is used.
+
+    To apply the filter, use the return vector b with the filter function, for example y = filter (b, 1, x).
     """
 
     # Verify frequency and magnitude vectors are reasonable
