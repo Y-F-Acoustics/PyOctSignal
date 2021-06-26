@@ -1,6 +1,5 @@
 import numpy as np
 import scipy.signal as signal
-import scipy.interpolate as interp
 
 def fir2(n: int, f, m, grid_n: int=None, ramp_n: int=None, window='hamming'):
     """
