@@ -102,7 +102,7 @@ def fir2(n: int, f, m, grid_n: int=None, ramp_n: int=None, window='hamming'):
     else:
         b = np.fft.ifft(np.hstack((grid, np.zeros(grid_n*2), grid[grid_n:1:-1])))
         b = 2 * np.real(np.hstack((b[len(b)-n:-1:2], b[1:n+1:2])))
-        print(len(b))
+        
     # Multiplication in the time domain is convolution in frequency,
     # so multiply y our window now to smooth the frequency response.
     # Also, for matlab compatibility, we return return values in 1 row
