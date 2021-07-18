@@ -28,4 +28,4 @@ def firls(N:int, frequencies, a, weight=None):
     http://cnx.org/content/m10577
     """
 
-    return signal.firls(N, frequencies, a, weight, fs=2)
+    return signal.firls(N, frequencies, a, weight=weight, fs=2)
